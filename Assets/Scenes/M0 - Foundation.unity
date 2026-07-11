@@ -462,8 +462,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63540106}
-  - component: {fileID: 63540108}
   - component: {fileID: 63540107}
+  - component: {fileID: 63540108}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -501,11 +501,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1198788837
-      Data2: 1177438829
-      Data3: 1431117501
-      Data4: -326572916
-    Path: event:/Ambience/Forest
+      Data1: 1573887529
+      Data2: 1201632480
+      Data3: 801461652
+      Data4: -2081568340
+    Path: event:/Music/GolfCourse1
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12
@@ -513,13 +513,7 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params:
-  - Name: Wind
-    Value: 0
-  - Name: Rain
-    Value: 0
-  - Name: Cover
-    Value: 0
+  Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -538,11 +532,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1573887529
-      Data2: 1201632480
-      Data3: 801461652
-      Data4: -2081568340
-    Path: event:/Music/GolfCourse1
+      Data1: 1198788837
+      Data2: 1177438829
+      Data3: 1431117501
+      Data4: -326572916
+    Path: event:/Ambience/Forest
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12
@@ -550,7 +544,9 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
-  Params: []
+  Params:
+  - Name: Wind
+    Value: 0.1
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
@@ -5121,6 +5117,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426888160}
+  - component: {fileID: 1426888162}
+  - component: {fileID: 1426888161}
   m_Layer: 0
   m_Name: AnimationManager
   m_TagString: Untagged
@@ -5143,6 +5141,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1525029344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1426888161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426888159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
+--- !u!114 &1426888162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426888159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1573887529
+      Data2: 1201632480
+      Data3: 801461652
+      Data4: -2081568340
+    Path: event:/Music/GolfCourse1
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1432642634
 GameObject:
   m_ObjectHideFlags: 0
