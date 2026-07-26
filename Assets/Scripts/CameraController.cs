@@ -3,19 +3,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
+    [SerializeField] Vector3 offsetPos;
+    [SerializeField] Quaternion offsetRot;
     public int sensitivity;
     public float smoothTime;
     public Vector2Int rotationXMinMax;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position = target.position + offsetPos;
+        transform.rotation = offsetRot;
+        transform.LookAt(target.position);
     }
 }
