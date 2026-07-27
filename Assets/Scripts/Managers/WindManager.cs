@@ -24,13 +24,14 @@ public class WindManager : MonoBehaviour
      void Start()
     {
         SetWindValues();
+        if (windPower != 0 | windRandomPower != 0) isWindy = true;
+        else isWindy = false;
     }
 
     private void Update()
     {
         if (windPower != 0 | windRandomPower != 0) isWindy = true;
         else isWindy = false;
-
         if (Input.GetKeyDown(KeyCode.R)) SetWindValues();
 
     }

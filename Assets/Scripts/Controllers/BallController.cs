@@ -8,9 +8,12 @@ public class BallController : MonoBehaviour
     public Vector3 startingPos;
     public Vector3 currentPos;
     public Vector3 finalPos;
-    public float ballSpeed;
+    public float ballSpeedMagnitude;
+    public Vector3 ballSpeedVector;
     public bool isHit;
     public bool isMoving;
+    public int isGroundedInt;
+    public bool isGrounded;
     public int hitCount;
     public int hitHeight = 1000;
     public int hitStrength = 2000;
@@ -20,8 +23,8 @@ public class BallController : MonoBehaviour
     public SpinDirection spinDirection;
     public string groundValue;
 
-    BoxCollider startCollider;
     WindManager windInfo;
+    BoxCollider windArea;
 
     public static BallController instance { get; private set; } = null;
 
@@ -37,10 +40,9 @@ public class BallController : MonoBehaviour
     void Start()
     {
         windInfo = GameObject.Find("WindManager").GetComponent<WindManager>();
+        windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
-        //startCollider = GameObject.Find("StartCollider").GetComponent<BoxCollider>();
         startingPos = transform.position;
-        groundValue = "Start";
     }
 
     void Update()
@@ -49,8 +51,11 @@ public class BallController : MonoBehaviour
         //Debug.DrawRay(transform.position, Vector2.down * rcDistance, Color.green);
 
         currentPos = transform.position;
-        ballSpeed = rb.linearVelocity.magnitude;
-        if (ballSpeed < 0.5 && groundValue != "Start" && isMoving && isHit) BallStopRolling();
+        ballSpeedMagnitude = rb.linearVelocity.magnitude;
+        ballSpeedVector = rb.linearVelocity;
+        if (isGroundedInt != 0) isGrounded = true;
+        else isGrounded = false;
+        if (ballSpeedMagnitude < 0.5 && isGrounded && groundValue != "Start") BallStopRolling();
         if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving)
         {
             rb.WakeUp();
@@ -75,14 +80,13 @@ public class BallController : MonoBehaviour
     }
     void BallHit()
     {
-        //remove startCollider
-        //startCollider.enabled = false;
         //add force to ball
         rb.AddForce(Vector3.up * hitHeight);
         rb.AddForce(Vector3.forward * hitStrength);
         if(spinDirection != 0) AddSpin();
         if (windInfo.isWindy && !windInfo.isRandWindy) rb.AddForce(windInfo.windDirection * windInfo.windPower);
         else if (windInfo.isWindy && windInfo.isRandWindy) rb.AddForce(windInfo.windRandomDirection * windInfo.windRandomPower);
+        windArea.enabled = false;
         isHit = true;
         isMoving = true;
         hitCount++;
@@ -93,10 +97,13 @@ public class BallController : MonoBehaviour
         isMoving = false;
         isHit = false;
         rb.linearVelocity = new Vector3(0, 0, 0);
+        rb.mass = 1;
+        rb.linearDamping = 0.1f;
         rb.Sleep();
+
         finalPos = transform.position;
-        //Debug.Log("Final Position: " + finalPos);
-       //startCollider.enabled = true;
+        groundValue = "Start";
+        windArea.enabled = true;
     }
     void AddSpin()
     {
@@ -119,8 +126,10 @@ public class BallController : MonoBehaviour
         }
     }
 
-     void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
+        isGroundedInt++;
+        //Debug.Log($"On the Ground{ballSpeedVector}");
         //Debug.Log($"Touched {collision.collider.tag}");
         switch (collision.collider.tag)
         {
@@ -150,4 +159,9 @@ public class BallController : MonoBehaviour
                 break;
         }
     }
+    void OnCollisionExit(Collision collision) 
+    {
+        isGroundedInt--;
+    }
+
 }

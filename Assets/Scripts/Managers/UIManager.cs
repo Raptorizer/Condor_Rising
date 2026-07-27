@@ -34,7 +34,8 @@ public class UIManager : MonoBehaviour
         debugVariables[2].text = $"Ball final position: {ballController.finalPos}";
         debugVariables[3].text = $"Ball has been hit?: {ballController.isHit}";
         debugVariables[4].text = $"Ball is moving?: {ballController.isMoving}";
-        debugVariables[17].text = $"Ball speed: {ballController.ballSpeed}";
+        debugVariables[18].text = $"Ball is grounded?: {ballController.isGrounded}";
+        debugVariables[17].text = $"Ball speed: {ballController.ballSpeedMagnitude}";
         debugVariables[5].text = $"Hit strength: {ballController.hitStrength}";
         debugVariables[6].text = $"Hit height: {ballController.hitHeight}";
         debugVariables[7].text = $"Hit count: {ballController.hitCount}";
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
         debugVariables[12].text = $"Wind direction: {windManager.windDirection}";
         debugVariables[13].text = $"Wind random strength {windManager.windRandomPower}";
         debugVariables[14].text = $"Wind random direction {windManager.windRandomDirection}";
-        debugVariables[15].text = $"Static wind?: {windManager.isWindy}";
+        debugVariables[15].text = $"Is it Windy?: {windManager.isWindy}";
         debugVariables[16].text = $"Random wind?: {windManager.isRandWindy}";
 
         foreach(TextMeshProUGUI t in debugVariables)
