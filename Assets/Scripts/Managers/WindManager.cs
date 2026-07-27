@@ -24,19 +24,13 @@ public class WindManager : MonoBehaviour
     }
      void Start()
     {
-        if (windRandomPower != 0 || windPower != 0)
+        if (isRandWindy)
         {
-            isWindy = true;
-            if (isRandWindy)
-            {
-                windRandomPower = Random.Range(0, 9);
-                windRandomDirection = new Vector3(Random.Range(-9, 9), Random.Range(-9, 9), Random.Range(-9, 9));
-            }
+            windRandomPower = Random.Range(0, 9);
+            windRandomDirection = new Vector3(Random.Range(-9, 9), Random.Range(-9, 9), Random.Range(-9, 9));
         }
-        else
-        {
-            isWindy = false;
-        }
+        if (windPower != 0 || windRandomPower != 0) isWindy = true;
+        else isWindy = false;
     }
 
     private void Update()
