@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
         debugVariables[2].text = $"Ball final position: {ballController.finalPos}";
         debugVariables[3].text = $"Ball has been hit?: {ballController.isHit}";
         debugVariables[4].text = $"Ball is moving?: {ballController.isMoving}";
+        debugVariables[17].text = $"Ball speed: {ballController.ballSpeed}";
         debugVariables[5].text = $"Hit strength: {ballController.hitStrength}";
         debugVariables[6].text = $"Hit height: {ballController.hitHeight}";
         debugVariables[7].text = $"Hit count: {ballController.hitCount}";

@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     public Vector3 startingPos;
     public Vector3 currentPos;
     public Vector3 finalPos;
+    public float ballSpeed;
     public bool isHit;
     public bool isMoving;
     public int hitCount;
@@ -15,16 +16,11 @@ public class BallController : MonoBehaviour
     public int hitStrength = 2000;
     [Range(0, 0.5f)]
     public float spinPower;
-    public enum SpinDirection{up, down, left, right}
+    public enum SpinDirection{none, up, down, left, right}
     public SpinDirection spinDirection;
+    public string groundValue;
 
-
-    [Header("Raycast Info")]
-    [SerializeField] LayerMask lm;
-    public int groundValue;
-    float rcDistance = 0.01f;
-    RaycastHit rch;
-
+    BoxCollider startCollider;
     WindManager windInfo;
 
     public static BallController instance { get; private set; } = null;
@@ -42,7 +38,9 @@ public class BallController : MonoBehaviour
     {
         windInfo = GameObject.Find("WindManager").GetComponent<WindManager>();
         rb = GetComponent<Rigidbody>();
+        //startCollider = GameObject.Find("StartCollider").GetComponent<BoxCollider>();
         startingPos = transform.position;
+        groundValue = "Start";
     }
 
     void Update()
@@ -50,32 +48,15 @@ public class BallController : MonoBehaviour
         //show raycast
         //Debug.DrawRay(transform.position, Vector2.down * rcDistance, Color.green);
 
-        //Check where ball stopped at
         currentPos = transform.position;
-        //Ground check
-        if (Physics.Raycast(transform.position, Vector3.down, out rch, rcDistance, lm)) GroundCheck();
+        ballSpeed = rb.linearVelocity.magnitude;
+        if (ballSpeed < 0.5 && groundValue != "Start" && isMoving && isHit) BallStopRolling();
         if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving)
         {
             rb.WakeUp();
             BallHit();
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetBall();
-        }
-        //checks if the ball stops moving
-        if(rb.linearVelocity.magnitude < 0.5f)
-        {
-            isMoving = false;
-            isHit = false;
-            //call finalpos
-            rb.linearVelocity = new Vector3(0, 0, 0);
-            if (groundValue != 0)
-            {
-                finalPos = transform.position;
-                Debug.Log("Final Position: " + finalPos);
-            }
-        }
+        if (Input.GetKeyDown(KeyCode.R)) ResetBall();
     }
 
     void ResetBall()
@@ -94,72 +75,79 @@ public class BallController : MonoBehaviour
     }
     void BallHit()
     {
-
+        //remove startCollider
+        //startCollider.enabled = false;
         //add force to ball
         rb.AddForce(Vector3.up * hitHeight);
         rb.AddForce(Vector3.forward * hitStrength);
         if(spinDirection != 0) AddSpin();
         if (windInfo.isWindy && !windInfo.isRandWindy) rb.AddForce(windInfo.windDirection * windInfo.windPower);
-        else if (windInfo.isRandWindy) rb.AddForce(windInfo.windRandomDirection * windInfo.windRandomPower);
+        else if (windInfo.isWindy && windInfo.isRandWindy) rb.AddForce(windInfo.windRandomDirection * windInfo.windRandomPower);
         isHit = true;
         isMoving = true;
         hitCount++;
+    }
+    void BallStopRolling()
+    {
+        //Stops the ball from moving
+        isMoving = false;
+        isHit = false;
+        rb.linearVelocity = new Vector3(0, 0, 0);
+        rb.Sleep();
+        finalPos = transform.position;
+        //Debug.Log("Final Position: " + finalPos);
+       //startCollider.enabled = true;
     }
     void AddSpin()
     {
         switch (spinDirection)
         {
             case SpinDirection.up:
+                rb.AddForce(Vector3.up * (spinPower * 1000));
                 break;
             case SpinDirection.down:
+                rb.AddForce(Vector3.down * (-spinPower * 1000));
                 break;
             case SpinDirection.left:
-                rb.AddForce(Vector3.left * (-spinPower * 100));
+                rb.AddForce(Vector3.left * (-spinPower * 1000));
                 break;
             case SpinDirection.right:
-                rb.AddForce(Vector3.right * (spinPower * 100));
-                break;
-        }
-    }
-    void GroundCheck()
-    {
-        Debug.Log(rch.collider.tag + " " + groundValue);
-        switch (rch.collider.tag)
-        {
-            case "Start":
-                groundValue = 0;
-                break;
-            case "Fairway":
-                groundValue = 1;
-                break;
-            case "Sand":
-                groundValue = 2;
-                break;
-            case "Green":
-                groundValue = 3;
-                break;
-            case "Water":
-                groundValue = 4;
-                ResetBall();
+                rb.AddForce(Vector3.right * (spinPower * 1000));
                 break;
             default:
-                groundValue = 0;
                 break;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Touched the ground");
-        if(collision.collider.tag != "Start" && collision.collider.tag != "WindArea")
+        //Debug.Log($"Touched {collision.collider.tag}");
+        switch (collision.collider.tag)
         {
-            rb.mass = 40;
-            rb.linearDamping = 0.6f;
+            case "Start":
+                groundValue = collision.collider.tag;
+                break;
+            case "Fairway":
+                groundValue = collision.collider.tag;
+                rb.mass = 40;
+                rb.linearDamping = 0.6f;
+                break;
+            case "Sand":
+                groundValue = collision.collider.tag;
+                BallStopRolling();
+                break;
+            case "Green":
+                groundValue = collision.collider.tag;
+                break;
+            case "Water":
+                groundValue = collision.collider.tag;
+                ResetBall();
+                break;
+            case "WindArea":
+                break;
+            default:
+                groundValue = collision.collider.tag;
+                break;
         }
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        //windInfo = other.gameObject;
-        if (other.tag != "WindArea") transform.position = startingPos;
     }
 }
