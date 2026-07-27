@@ -9,6 +9,7 @@ TagManager:
   - Sand
   - Rock
   - Water
+  - Start
   layers:
   - Default
   - TransparentFX

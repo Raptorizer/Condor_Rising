@@ -3,39 +3,45 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    [Header("Ball Hit Values")]
-    [SerializeField] int shootHeight;
-    [SerializeField] int shootPower;
-    [Range(0, 1)]
-    [SerializeField] float spinValue;
-    public enum SpinDirection{up, down, left, right}
-    [SerializeField] SpinDirection spinDirection;
-
-    bool isHit;
-    [SerializeField] int randomDistance;
-
-    //raycast info
-    [SerializeField] int groundValue;
-    [SerializeField] LayerMask lm;
-    [SerializeField] float rcDistance = 0.01f;
-    RaycastHit rch;
-
+    [Header("Ball info")]
     Rigidbody rb;
     Vector3 startingPos;
     Vector3 finalPos;
-    Transform mc;
+    bool isHit;
+    public int shootHeight;
+    public int shootPower;
+    [Range(0, 0.5f)]
+    public float spinValue;
+    public enum SpinDirection{up, down, left, right}
+    [SerializeField] SpinDirection spinDirection;
 
 
+    [Header("Raycast Info")]
+    [SerializeField] LayerMask lm;
+    int groundValue;
+    float rcDistance = 0.01f;
+    RaycastHit rch;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameObject windInfo;
+
+    public static BallController instance { get; private set; } = null;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError($"Found Duplicate BallController on {gameObject.name}");
+            Destroy(gameObject);
+            return;
+        }
+    }
     void Start()
     {
-        mc = Camera.main.transform;
+
         rb = GetComponent<Rigidbody>();
         startingPos = this.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //show raycast
@@ -44,15 +50,11 @@ public class BallController : MonoBehaviour
         //Check where ball stopped at
         finalPos = this.transform.position;
         //Ground check
-        if (Physics.Raycast(transform.position, Vector3.down, out rch, rcDistance, lm))
-        {
-            GroundCheck();
-        }
+        if (Physics.Raycast(transform.position, Vector3.down, out rch, rcDistance, lm)) GroundCheck();
         if (Input.GetKeyDown(KeyCode.Space) && !isHit)
         {
             rb.WakeUp();
             isHit = true;
-            randomDistance = UnityEngine.Random.Range(-100, 100);
             BallHit();
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -77,11 +79,26 @@ public class BallController : MonoBehaviour
     {
         //add force to ball
         rb.AddForce(Vector3.up * shootHeight);
-        rb.AddForce(Vector3.forward * (shootPower + randomDistance));
+        rb.AddForce(Vector3.forward * shootPower);
+        if(spinDirection != 0) AddSpin();
+        if (windInfo.GetComponent<WindManager>().isWindy) rb.AddForce(windInfo.GetComponent<WindManager>().windDirection * windInfo.GetComponent<WindManager>().windPower);
+        else if (windInfo.GetComponent<WindManager>().isRandWindy) rb.AddForce(windInfo.GetComponent<WindManager>().windRandomDirection * windInfo.GetComponent<WindManager>().windRandomPower);
     }
     void AddSpin()
     {
-
+        switch (spinDirection)
+        {
+            case SpinDirection.up:
+                break;
+            case SpinDirection.down:
+                break;
+            case SpinDirection.left:
+                rb.AddForce(Vector3.left * (-spinValue * 100));
+                break;
+            case SpinDirection.right:
+                rb.AddForce(Vector3.right * (spinValue * 100));
+                break;
+        }
     }
     void GroundCheck()
     {
@@ -114,27 +131,15 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Touched the ground");
-        if(collision.collider.tag != "Start")
+        if(collision.collider.tag != "Start" && collision.collider.tag != "WindArea")
         {
             rb.mass = 40;
             rb.linearDamping = 0.6f;
         }
-        switch (spinDirection)
-        {
-            case SpinDirection.up:
-                break;
-            case SpinDirection.down:
-                break;
-            case SpinDirection.left:
-                rb.AddForce(Vector3.left * (-spinValue *100));
-                break;
-            case SpinDirection.right:
-                rb.AddForce(Vector3.right * (spinValue*100));
-                break;
-        }
     }
     void OnTriggerEnter(Collider other)
     {
-        this.transform.position = startingPos;
+        windInfo = other.gameObject;
+        if (other.tag != "WindArea") transform.position = startingPos;
     }
 }
