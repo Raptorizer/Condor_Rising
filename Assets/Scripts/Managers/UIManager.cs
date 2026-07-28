@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         if (windManager == null) windManager = WindManager.instance;
-        if (ballController == null) ballController = BallController.instance;
+        if (ballController == null) ballController = BallController.Instance;
     }
 
      void Update()

@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -347,6 +351,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -519,6 +527,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -639,7 +651,7 @@ GameObject:
   m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &54948494
 Transform:
@@ -891,6 +903,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1093,6 +1109,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1354,6 +1374,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1385,7 +1409,7 @@ GameObject:
   m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &123202109
 Transform:
@@ -1547,6 +1571,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2028,7 +2056,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &170551032
 Transform:
@@ -2115,6 +2143,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2399,6 +2431,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2480,6 +2516,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2652,6 +2692,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2734,6 +2778,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2815,6 +2863,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3213,6 +3265,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3546,6 +3602,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3716,6 +3776,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4193,6 +4257,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4338,6 +4406,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4702,6 +4774,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4865,6 +4941,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4946,6 +5026,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5207,6 +5291,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5235,7 +5323,7 @@ GameObject:
   m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &539007158
 Transform:
@@ -5295,7 +5383,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!23 &549673984
 MeshRenderer:
@@ -5367,8 +5455,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1653986632}
-  - {fileID: 611754351}
   - {fileID: 792468108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -5439,6 +5525,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5928,6 +6018,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6010,6 +6104,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6024,52 +6122,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2116585122}
   m_SourcePrefab: {fileID: 100100000, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
---- !u!1 &611754350
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 611754351}
-  - component: {fileID: 611754352}
-  m_Layer: 6
-  m_Name: AudioListener
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &611754351
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611754350}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 549673986}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &611754352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611754350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioListener
-  nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 549673982}
 --- !u!1001 &620383273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6137,6 +6189,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6624,6 +6680,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6795,6 +6855,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6876,6 +6940,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7187,6 +7255,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7268,6 +7340,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7440,6 +7516,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7610,6 +7690,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7871,6 +7955,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8041,6 +8129,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8263,6 +8355,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8345,6 +8441,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8426,6 +8526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8904,6 +9008,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Sand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8932,7 +9040,7 @@ GameObject:
   m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &818625930
 Transform:
@@ -8991,7 +9099,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &829146702
 Transform:
@@ -9181,7 +9289,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &833538764
 Transform:
@@ -9268,6 +9376,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9381,6 +9493,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9642,6 +9758,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2099316281507514234, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3809355023419341736, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9649,6 +9769,10 @@ PrefabInstance:
     - target: {fileID: 6983288533070245324, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761690966304332561, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8240620650046043906, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
       propertyPath: m_Material
@@ -9671,6 +9795,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3809355023419341736, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
     - {fileID: 4653997722087192985, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
+    - {fileID: 4792198252104672069, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2099316281507514234, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
@@ -9732,21 +9857,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683aacc70ae17f844a6db76a0dc8450b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  startingPos: {x: 0, y: 0, z: 0}
-  currentPos: {x: 0, y: 0, z: 0}
-  finalPos: {x: 0, y: 0, z: 0}
-  ballSpeedMagnitude: 0
-  ballSpeedVector: {x: 0, y: 0, z: 0}
+  stopVelocityThreshold: 0.3
+  defaultMass: 0.04593
+  defaultDamping: 0.1
+  groundMassMultiplier: 40
+  groundDampingMultiplier: 6
+  spinMultiplier: 10
   isHit: 0
-  isMoving: 0
-  isGroundedInt: 0
-  isGrounded: 0
   hitCount: 0
   hitHeight: 50
   hitStrength: 100
   spinPower: 0
   spinDirection: 0
+  windInfo: {fileID: 0}
+  windArea: {fileID: 1054916581}
+  startingPos: {x: 0, y: 0, z: 0}
+  currentPos: {x: 0, y: 0, z: 0}
+  finalPos: {x: 0, y: 0, z: 0}
+  ballSpeedMagnitude: 0
+  ballSpeedVector: {x: 0, y: 0, z: 0}
+  isMoving: 0
+  isGrounded: 0
   groundValue: 
+  groundType: 0
 --- !u!96 &878205373
 TrailRenderer:
   serializedVersion: 4
@@ -10023,6 +10156,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10104,6 +10241,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10275,6 +10416,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10536,6 +10681,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10617,6 +10766,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10789,6 +10942,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10870,6 +11027,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11131,6 +11292,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11265,6 +11430,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3906130615805142554, guid: 0eed8d882a389b34391cd6a9424a25bd, type: 3}
+--- !u!65 &1054916581 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 140885241323303005, guid: 2fbb6c85cd0b18a409dfae33e4319200, type: 3}
+  m_PrefabInstance: {fileID: 878205367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1059624608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11333,6 +11503,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11361,7 +11535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1080532381
 Transform:
@@ -11535,6 +11709,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11803,6 +11981,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11977,6 +12159,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 84bd65ffd55f3d9478c46a70bab0d5c9, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84bd65ffd55f3d9478c46a70bab0d5c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12199,6 +12385,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12510,6 +12700,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12591,6 +12785,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12900,6 +13098,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12928,7 +13130,7 @@ GameObject:
   m_TagString: Green
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1203680487
 Transform:
@@ -12986,7 +13188,7 @@ GameObject:
   m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1205667221
 Transform:
@@ -13072,6 +13274,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13153,6 +13359,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13236,6 +13446,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13317,6 +13531,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13537,6 +13755,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13708,6 +13930,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13878,6 +14104,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14275,6 +14505,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14993,6 +15227,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15466,7 +15704,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1523624063
 Transform:
@@ -15592,6 +15830,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15673,6 +15915,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15791,7 +16037,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1537803271
 Transform:
@@ -15880,6 +16126,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15998,7 +16248,7 @@ GameObject:
   m_TagString: Start
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1557534769
 Transform:
@@ -16085,6 +16335,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16257,6 +16511,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16338,6 +16596,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16510,6 +16772,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16627,7 +16893,7 @@ GameObject:
   m_TagString: Sand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1589767745
 Transform:
@@ -16803,6 +17069,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17023,6 +17293,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17037,37 +17311,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 875095167}
   m_SourcePrefab: {fileID: 100100000, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
---- !u!1 &1653986631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1653986632}
-  m_Layer: 6
-  m_Name: CameraPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1653986632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653986631}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 549673986}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1656493377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17135,6 +17378,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17448,6 +17695,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84bd65ffd55f3d9478c46a70bab0d5c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -17742,6 +17993,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17917,6 +18172,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84bd65ffd55f3d9478c46a70bab0d5c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -18001,6 +18260,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18439,6 +18702,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18895,6 +19162,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19065,6 +19336,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19241,6 +19516,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c95a9d2235981794f98eb9982a21eca2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19412,6 +19691,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19493,6 +19776,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19932,6 +20219,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20102,6 +20393,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Fairway
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20274,6 +20569,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20302,7 +20601,7 @@ GameObject:
   m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2011835516
 Transform:
@@ -20744,6 +21043,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20915,6 +21218,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20996,6 +21303,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Sand
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21396,6 +21707,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Fairway
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21477,6 +21792,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
       propertyPath: m_TagString
       value: Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6970ec9ed7629f45a8ab10520dc529d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

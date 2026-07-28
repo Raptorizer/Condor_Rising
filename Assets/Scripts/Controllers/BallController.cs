@@ -1,162 +1,220 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
+
+public enum SpinDirection { none, up, down, left, right }
+public enum GroundTypes {none, Start, Fairway, Green, Rough, Sand, Water }
+[RequireComponent(typeof(Rigidbody))]
 public class BallController : MonoBehaviour
 {
-    [Header("Ball info")]
-    Rigidbody rb;
+    public static BallController Instance { get; private set; } = null;
+
+    [Header("Physics")]
+    [SerializeField] private float stopVelocityThreshold = 0.3f;
+    [SerializeField] private float defaultMass = 0.04593f;
+    [SerializeField] private float defaultDamping = 0.1f;
+    [SerializeField] private float groundMassMultiplier = 40f;
+    [SerializeField] private float groundDampingMultiplier = 6f;
+    [SerializeField] private float spinMultiplier = 10f;
+
+    [Header("Hit Settings")]
+    public bool isHit;
+    private bool applyHitForce; // Flag to sync Update input with FixedUpdate physics
+    public int hitCount;
+    public int hitHeight = 50;
+    public int hitStrength = 100;
+    [Range(0, 0.5f)] public float spinPower;
+    public SpinDirection spinDirection;
+
+    [Header("External References")]
+    [SerializeField] WindManager windInfo;
+    [SerializeField] BoxCollider windArea;
+
+    [Header("Debug Values")]
     public Vector3 startingPos;
     public Vector3 currentPos;
     public Vector3 finalPos;
     public float ballSpeedMagnitude;
     public Vector3 ballSpeedVector;
-    public bool isHit;
     public bool isMoving;
-    public int isGroundedInt;
     public bool isGrounded;
-    public int hitCount;
-    public int hitHeight = 1000;
-    public int hitStrength = 2000;
-    [Range(0, 0.5f)]
-    public float spinPower;
-    public enum SpinDirection{none, up, down, left, right}
-    public SpinDirection spinDirection;
     public string groundValue;
+    public GroundTypes groundType;
+    private int isGroundedInt;
 
-    WindManager windInfo;
-    BoxCollider windArea;
+    Rigidbody rb;
 
-    public static BallController instance { get; private set; } = null;
 
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
     }
     void Start()
     {
-        windInfo = WindManager.instance;
-        windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
+        if (windInfo == null) windInfo = WindManager.instance;
+        if (windArea == null) windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         startingPos = transform.position;
     }
 
     void Update()
     {
-        //show raycast
-        //Debug.DrawRay(transform.position, Vector2.down * rcDistance, Color.green);
-
         currentPos = transform.position;
-        ballSpeedMagnitude = rb.linearVelocity.magnitude;
-        ballSpeedVector = rb.linearVelocity;
-        if (isGroundedInt != 0) isGrounded = true;
-        else isGrounded = false;
-        if (ballSpeedMagnitude < 0.3 && isGrounded && groundValue != "Start") BallStopRolling();
-        if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving)
-        {
-            rb.WakeUp();
-            BallHit();
-        }
+        if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
         if (Input.GetKeyDown(KeyCode.R)) ResetBall();
     }
-
+     void FixedUpdate()
+    {
+        isGrounded = isGroundedInt > 0;
+        ballSpeedVector = rb.linearVelocity;
+        ballSpeedMagnitude = ballSpeedVector.magnitude;
+        // Apply the hit force if spacebar was pressed during Update
+        if (applyHitForce)
+        {
+            ExecuteHit();
+            applyHitForce = false;
+        }
+        if (ballSpeedMagnitude > stopVelocityThreshold) return;
+        if (groundValue == "Start") return;
+        if (!isGrounded) return;
+        if (!isMoving) return;
+        BallStopRolling();
+    }
     void ResetBall()
     {
-        //reset game values
         hitCount = 0;
         isHit = false;
         isMoving = false;
-        //reset position values
-        finalPos = Vector3.zero;
-        transform.position = startingPos;
-        //reset rigidbody values
-        rb.mass = 0.04593f;
-        rb.linearDamping = 0.1f;
+        applyHitForce = false;
+
+        rb.mass = defaultMass;
+        rb.linearDamping = defaultDamping;
         rb.Sleep();
+
+        //finalPos = Vector3.zero;
+        transform.position = startingPos;
     }
+    void PrepareHit()
+    {
+        rb.WakeUp();
+        if (windArea != null) windArea.enabled = false;
+        isHit = true;
+        isMoving = true;
+        hitCount++;
+
+        // Signal FixedUpdate to apply forces on the next physics step
+        applyHitForce = true;
+    }
+
+    void ExecuteHit()
+    {
+        // Combine all force calculations into a single Vector3
+        Vector3 totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength);
+
+        if (spinDirection != SpinDirection.none) totalForce += AddSpin();
+
+        if (windInfo != null && windInfo.isWindy)
+        {
+            totalForce += windInfo.isRandWindy
+                ? (windInfo.windRandomDirection * windInfo.windRandomPower)
+                : (windInfo.windDirection * windInfo.windPower);
+        }
+        // Single line AddForce
+        rb.AddForce(totalForce);
+    }
+
+    /* 
     void BallHit()
     {
+        rb.WakeUp();
         //add force to ball
         rb.AddForce(Vector3.up * hitHeight);
         rb.AddForce(Vector3.forward * hitStrength);
-        if(spinDirection != 0) AddSpin();
+        if (spinDirection != 0) AddSpin();
         if (windInfo.isWindy && !windInfo.isRandWindy) rb.AddForce(windInfo.windDirection * windInfo.windPower);
         else if (windInfo.isWindy && windInfo.isRandWindy) rb.AddForce(windInfo.windRandomDirection * windInfo.windRandomPower);
         windArea.enabled = false;
         isHit = true;
         isMoving = true;
         hitCount++;
-    }
+    } */
     void BallStopRolling()
     {
         //Stops the ball from moving
         isMoving = false;
         isHit = false;
-        rb.linearVelocity = new Vector3(0, 0, 0);
-        rb.mass = 0.04593f;
-        rb.linearDamping = 0.1f;
+        rb.linearVelocity = Vector3.zero;
+        rb.mass = defaultMass;
+        rb.linearDamping = defaultDamping;
         rb.Sleep();
 
         finalPos = transform.position;
-        groundValue = "Start";
-        windArea.enabled = true;
+        if (windArea != null) windArea.enabled = true;
     }
-    void AddSpin()
+    Vector3 AddSpin()
     {
-        switch (spinDirection)
+        float appliedSpin = spinPower * spinMultiplier;
+
+        return spinDirection switch
         {
-            case SpinDirection.up:
-                rb.AddForce(Vector3.up * (spinPower * 10));
-                break;
-            case SpinDirection.down:
-                rb.AddForce(Vector3.down * (-spinPower * 10));
-                break;
-            case SpinDirection.left:
-                rb.AddForce(Vector3.left * (-spinPower * 10));
-                break;
-            case SpinDirection.right:
-                rb.AddForce(Vector3.right * (spinPower * 10));
-                break;
-            default:
-                break;
-        }
-    }
+            SpinDirection.up => Vector3.up * appliedSpin,
+            SpinDirection.down => Vector3.down * appliedSpin,
+            SpinDirection.left => Vector3.left * appliedSpin,
+            SpinDirection.right => Vector3.right * appliedSpin,
+            _ => Vector3.zero,
+        };
+    } 
+ 
 
     void OnCollisionEnter(Collision collision)
     {
         isGroundedInt++;
+        groundValue = collision.collider.tag;
         //Debug.Log($"On the Ground{ballSpeedVector}");
         //Debug.Log($"Touched {collision.collider.tag}");
-        switch (collision.collider.tag)
+
+        if (!Enum.IsDefined(typeof(GroundTypes), groundValue))
         {
-            case "Start":
-                groundValue = collision.collider.tag;
+            // error should occur
+            return;
+        }
+
+        switch (Enum.Parse<GroundTypes>(groundValue))
+        {
+            case GroundTypes.Start:
+                rb.mass = defaultMass;
+                rb.linearDamping = defaultDamping;
                 break;
-            case "Fairway":
-                groundValue = collision.collider.tag;
-                rb.mass = 40;
-                rb.linearDamping = 0.6f;
+            case GroundTypes.Fairway:
+                rb.mass = defaultMass * groundMassMultiplier;
+                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
-            case "Sand":
-                groundValue = collision.collider.tag;
-                BallStopRolling();
+            case GroundTypes.Rough:
+                groundMassMultiplier = groundMassMultiplier * 2;
+                groundDampingMultiplier = groundDampingMultiplier * 2;
+                rb.mass = defaultMass * groundMassMultiplier;
+                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
-            case "Green":
-                groundValue = collision.collider.tag;
+            case GroundTypes.Green:
+                rb.mass = defaultMass * groundMassMultiplier;
+                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
-            case "Water":
-                groundValue = collision.collider.tag;
+            case GroundTypes.Water:
                 ResetBall();
                 break;
-            case "WindArea":
+            case GroundTypes.Sand:
+                BallStopRolling();
                 break;
             default:
-                groundValue = collision.collider.tag;
+                Debug.Log("Ball has not hit a valid ground type");
                 break;
         }
     }
