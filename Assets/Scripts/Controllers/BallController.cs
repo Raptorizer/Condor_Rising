@@ -30,16 +30,17 @@ public class BallController : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogError($"Found Duplicate BallController on {gameObject.name}");
+            Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
             Destroy(gameObject);
             return;
         }
+        instance = this;
     }
     void Start()
     {
-        windInfo = GameObject.Find("WindManager").GetComponent<WindManager>();
+        windInfo = WindManager.instance;
         windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         startingPos = transform.position;
@@ -55,7 +56,7 @@ public class BallController : MonoBehaviour
         ballSpeedVector = rb.linearVelocity;
         if (isGroundedInt != 0) isGrounded = true;
         else isGrounded = false;
-        if (ballSpeedMagnitude < 0.5 && isGrounded && groundValue != "Start") BallStopRolling();
+        if (ballSpeedMagnitude < 0.3 && isGrounded && groundValue != "Start") BallStopRolling();
         if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving)
         {
             rb.WakeUp();
@@ -74,7 +75,7 @@ public class BallController : MonoBehaviour
         finalPos = Vector3.zero;
         transform.position = startingPos;
         //reset rigidbody values
-        rb.mass = 1;
+        rb.mass = 0.04593f;
         rb.linearDamping = 0.1f;
         rb.Sleep();
     }
@@ -97,7 +98,7 @@ public class BallController : MonoBehaviour
         isMoving = false;
         isHit = false;
         rb.linearVelocity = new Vector3(0, 0, 0);
-        rb.mass = 1;
+        rb.mass = 0.04593f;
         rb.linearDamping = 0.1f;
         rb.Sleep();
 
@@ -110,16 +111,16 @@ public class BallController : MonoBehaviour
         switch (spinDirection)
         {
             case SpinDirection.up:
-                rb.AddForce(Vector3.up * (spinPower * 1000));
+                rb.AddForce(Vector3.up * (spinPower * 10));
                 break;
             case SpinDirection.down:
-                rb.AddForce(Vector3.down * (-spinPower * 1000));
+                rb.AddForce(Vector3.down * (-spinPower * 10));
                 break;
             case SpinDirection.left:
-                rb.AddForce(Vector3.left * (-spinPower * 1000));
+                rb.AddForce(Vector3.left * (-spinPower * 10));
                 break;
             case SpinDirection.right:
-                rb.AddForce(Vector3.right * (spinPower * 1000));
+                rb.AddForce(Vector3.right * (spinPower * 10));
                 break;
             default:
                 break;
