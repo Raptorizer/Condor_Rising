@@ -42,7 +42,6 @@ public class BallController : MonoBehaviour
     public bool isGrounded;
     public string groundValue;
     public GroundTypes groundType;
-    private int isGroundedInt;
 
     Rigidbody rb;
 
@@ -73,7 +72,6 @@ public class BallController : MonoBehaviour
     }
      void FixedUpdate()
     {
-        isGrounded = isGroundedInt > 0;
         ballSpeedVector = rb.linearVelocity;
         ballSpeedMagnitude = ballSpeedVector.magnitude;
         // Apply the hit force if spacebar was pressed during Update
@@ -130,22 +128,6 @@ public class BallController : MonoBehaviour
         // Single line AddForce
         rb.AddForce(totalForce);
     }
-
-    /* 
-    void BallHit()
-    {
-        rb.WakeUp();
-        //add force to ball
-        rb.AddForce(Vector3.up * hitHeight);
-        rb.AddForce(Vector3.forward * hitStrength);
-        if (spinDirection != 0) AddSpin();
-        if (windInfo.isWindy && !windInfo.isRandWindy) rb.AddForce(windInfo.windDirection * windInfo.windPower);
-        else if (windInfo.isWindy && windInfo.isRandWindy) rb.AddForce(windInfo.windRandomDirection * windInfo.windRandomPower);
-        windArea.enabled = false;
-        isHit = true;
-        isMoving = true;
-        hitCount++;
-    } */
     void BallStopRolling()
     {
         //Stops the ball from moving
@@ -172,11 +154,10 @@ public class BallController : MonoBehaviour
             _ => Vector3.zero,
         };
     } 
- 
 
     void OnCollisionEnter(Collision collision)
     {
-        isGroundedInt++;
+        isGrounded = true;
         groundValue = collision.collider.tag;
         //Debug.Log($"On the Ground{ballSpeedVector}");
         //Debug.Log($"Touched {collision.collider.tag}");
@@ -220,7 +201,7 @@ public class BallController : MonoBehaviour
     }
     void OnCollisionExit(Collision collision) 
     {
-        isGroundedInt--;
+        isGrounded = false;
     }
 
 }
