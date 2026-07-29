@@ -27,7 +27,7 @@ public class TrajectoryLine : MonoBehaviour
         //grab the projectile speed from the player's bullet behavior
         bc = GetComponentInParent<BallController>();
         hitPower = bc.hitStrength;
-        _hitGravity = bc.hitGravity;
+        //_hitGravity = bc.hitGravity;
     }
 
     private void Update()
