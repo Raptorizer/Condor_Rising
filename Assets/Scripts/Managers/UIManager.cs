@@ -5,18 +5,18 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> debugVariables;
-    BallController ballController;
+    [SerializeField] BallController ballController;
     WindManager windManager;
-    public static UIManager instance { get; private set; } = null;
+    public static UIManager Instance { get; private set; } = null;
     void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
             Debug.LogError($"Found Duplicate UIManager on {gameObject.name}");
             Destroy(gameObject);
             return;
         }
-        instance = this;
+        Instance = this;
     }
     void Start()
     {
