@@ -67,8 +67,8 @@ public class BallController : MonoBehaviour
     void Update()
     {
         currentPos = transform.position;
-        if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
-        if (Input.GetKeyDown(KeyCode.R)) ResetBall();
+        //if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
+        //if (Input.GetKeyDown(KeyCode.R)) ResetBall();
     }
      void FixedUpdate()
     {
@@ -86,7 +86,7 @@ public class BallController : MonoBehaviour
         if (!isMoving) return;
         BallStopRolling();
     }
-    void ResetBall()
+    public void ResetBall()
     {
         hitCount = 0;
         isHit = false;
@@ -100,8 +100,9 @@ public class BallController : MonoBehaviour
         //finalPos = Vector3.zero;
         transform.position = startingPos;
     }
-    void PrepareHit()
+    public void PrepareHit()
     {
+        Debug.Log("Prepare hit");
         rb.WakeUp();
         if (windArea != null) windArea.enabled = false;
         isHit = true;
