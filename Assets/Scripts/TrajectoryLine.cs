@@ -1,58 +1,56 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TrajectoryLine : MonoBehaviour
 {
-    [SerializeField] private LineRenderer _line;
-    [SerializeField] private int _maxPhysicsFrameIterations = 100;
-    [SerializeField] private Transform _obstaclesParent;
+    [Header("References")]
+    [SerializeField] BallController bc;
 
-    private Scene _simulationScene;
-    private PhysicsScene _physicsScene;
-    private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
+    [Header("Trajectory Line Smoothness/Length")]
+    [SerializeField] int _segmentCount = 50;
+    [SerializeField] float _curveLength = 3.5f;
+    Vector3[] _segments;
+    LineRenderer lr;
 
+    float hitPower;
+    float _hitGravity;
+
+    const float TIME_CURVE_ADDITION = 0.5f;
     private void Start()
     {
-        CreatePhysicsScene();
-    }
+        //initialize segments
+        _segments = new Vector3[_segmentCount];
 
-    private void CreatePhysicsScene()
-    {
-        _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
-        _physicsScene = _simulationScene.GetPhysicsScene();
+        //Grab Line Renderer and set its points
+        lr = GetComponent<LineRenderer>();
+        lr.positionCount = _segmentCount;
 
-        foreach (Transform obj in _obstaclesParent)
-        {
-            var ghostObj = Instantiate(obj.gameObject, obj.position, obj.rotation);
-            ghostObj.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
-            if (!ghostObj.isStatic) _spawnedObjects.Add(obj, ghostObj.transform);
-        }
+        //grab the projectile speed from the player's bullet behavior
+        bc = GetComponentInParent<BallController>();
+        hitPower = bc.hitStrength;
+        //_hitGravity = bc.hitGravity;
     }
 
     private void Update()
     {
-        foreach (var item in _spawnedObjects)
+        //set the starting position of the line Renderer
+        Vector3 startPos = bc.startingPos;
+        _segments[0] = startPos;
+        lr.SetPosition(0, startPos);
+
+        //set the start velocity based on balls
+        Vector3 startVelocity = -transform.right * hitPower;
+        for(int i = 1; i < _segmentCount; i++)
         {
-            item.Value.SetPositionAndRotation(item.Key.position, item.Key.rotation);
+            //compute the time offset
+            float timeOffset = (i * Time.fixedDeltaTime * _curveLength);
+
+            //compute gravity
+            Vector3 gravityOffset = TIME_CURVE_ADDITION * Physics.gravity * _hitGravity * Mathf.Pow(timeOffset, 2);
+
+            //Set the position of the point in the line renderer
+            _segments[i] = _segments[0] + startVelocity * timeOffset + gravityOffset;
+            lr.SetPosition(i, _segments[i]);
         }
-    }
-
-    public void SimulateTrajectory(BallController ballPrefab, Vector3 pos)
-    {
-        var ghostObj = Instantiate(ballPrefab, pos, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
-
-        _line.positionCount = _maxPhysicsFrameIterations;
-
-        for (var i = 0; i < _maxPhysicsFrameIterations; i++)
-        {
-            _physicsScene.Simulate(Time.fixedDeltaTime);
-            _line.SetPosition(i, ghostObj.transform.position);
-        }
-
-        Destroy(ghostObj.gameObject);
     }
 
 }

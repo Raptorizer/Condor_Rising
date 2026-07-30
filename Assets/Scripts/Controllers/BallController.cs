@@ -43,15 +43,15 @@ public class BallController : MonoBehaviour
     public string groundValue;
     public GroundTypes groundType;
 
-    [SerializeField] Rigidbody rb;
+    Rigidbody rb;
 
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Debug.LogError($"Found Duplicate Ball Controller on {this.gameObject}");
-            Destroy(this.gameObject);
+            Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
+            Destroy(gameObject);
             return;
         }
         Instance = this;
@@ -67,7 +67,7 @@ public class BallController : MonoBehaviour
     void Update()
     {
         currentPos = transform.position;
-        //if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
+        if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
         if (Input.GetKeyDown(KeyCode.R)) ResetBall();
     }
      void FixedUpdate()
@@ -100,7 +100,7 @@ public class BallController : MonoBehaviour
         //finalPos = Vector3.zero;
         transform.position = startingPos;
     }
-    public void PrepareHit()
+    void PrepareHit()
     {
         rb.WakeUp();
         if (windArea != null) windArea.enabled = false;
