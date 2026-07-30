@@ -5,14 +5,11 @@ public class CameraController : MonoBehaviour
     public Transform target;
     [SerializeField] Vector3 offsetPos;
     [SerializeField] Quaternion offsetRot;
-    public int sensitivity;
-    public float smoothTime;
-    public Vector2Int rotationXMinMax;
-    public static CameraController instance { get; private set; } = null;
+    public static CameraController Instance { get; private set; } = null;
 
     void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError($"Found Duplicate CameraController on {gameObject.name}");
             Destroy(gameObject);
@@ -21,8 +18,7 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = target.position + offsetPos;
-        transform.rotation = offsetRot;
+        transform.SetPositionAndRotation(target.position + offsetPos, offsetRot);
         transform.LookAt(target.position);
     }
 }

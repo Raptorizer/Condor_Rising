@@ -42,20 +42,21 @@ public class BallController : MonoBehaviour
     public bool isGrounded;
     public string groundValue;
     public GroundTypes groundType;
+    bool _isGhost;
 
-    Rigidbody rb;
+    public Rigidbody rb;
 
 
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
+    //void Awake()
+    //{
+    //    if (Instance != null && Instance != this)
+    //    {
+    //        Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+    //    Instance = this;
+    //}
     void Start()
     {
         if (windInfo == null) windInfo = WindManager.instance;
@@ -100,6 +101,11 @@ public class BallController : MonoBehaviour
         //finalPos = Vector3.zero;
         transform.position = startingPos;
     }
+    public void Init(Vector3 totalForce, bool isGhost)
+    {
+        _isGhost = isGhost;
+        rb.AddForce(totalForce);
+    }
     public void PrepareHit()
     {
         Debug.Log("Prepare hit");
@@ -113,7 +119,7 @@ public class BallController : MonoBehaviour
         applyHitForce = true;
     }
 
-    void ExecuteHit()
+    public void ExecuteHit()
     {
         // Combine all force calculations into a single Vector3
         Vector3 totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength);
@@ -158,6 +164,7 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (_isGhost) return;
         isGrounded = true;
         groundValue = collision.collider.tag;
         //Debug.Log($"On the Ground{ballSpeedVector}");
