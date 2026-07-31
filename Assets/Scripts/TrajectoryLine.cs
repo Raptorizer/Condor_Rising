@@ -19,25 +19,25 @@ public class TrajectoryLine : MonoBehaviour
 
         foreach(Transform t in envrionmentParent)
         {
-            var ghostObj = Instantiate(t.gameObject, t.transform.position,t.rotation);
-            ghostObj.GetComponent<Renderer>().enabled = false;
-            SceneManager.MoveGameObjectToScene(ghostObj, simulationScene);
+            var ghostEnviroObj = Instantiate(t.gameObject, t.transform.position,t.rotation);
+            ghostEnviroObj.GetComponent<Renderer>().enabled = false;
+            SceneManager.MoveGameObjectToScene(ghostEnviroObj, simulationScene);
         }
     }
-    public void SimulateTrajectory(BallController ball, Vector3 pos, Vector3 totalForce)
+    public void SimulateTrajectory(FauxBallController ball, Vector3 pos, Vector3 totalForce)
     {
-        var ghostObj = Instantiate(ball, pos, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, simulationScene);
+        var ghostBallObj = Instantiate(ball, pos, Quaternion.identity);
+        SceneManager.MoveGameObjectToScene(ghostBallObj.gameObject, simulationScene);
 
-        ghostObj.Init(totalForce,true);
+        ghostBallObj.Init(totalForce,true);
 
         lineRenderer.positionCount = _maxPhysicsFrameIterations;
 
         for (int i = 0; i < _maxPhysicsFrameIterations; i++)
         {
             physicsScene.Simulate(Time.fixedDeltaTime);
-            lineRenderer.SetPosition(i, ghostObj.transform.position);
+            lineRenderer.SetPosition(i, ghostBallObj.transform.position);
         }
-        Destroy(ghostObj.gameObject);
+        Destroy(ghostBallObj.gameObject);
     }
 }

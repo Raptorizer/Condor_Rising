@@ -5,8 +5,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> debugVariables;
-    BallController ballController;
-    WindManager windManager;
+    [SerializeField]BallController ballController;
+    [SerializeField] WindManager windManager;
     public static UIManager instance { get; private set; } = null;
     void Awake()
     {

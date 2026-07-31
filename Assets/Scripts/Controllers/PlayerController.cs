@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f; //Degrees per second
     [SerializeField] TrajectoryLine trajectoryLine;
     [SerializeField] BallController ballController;
+    [SerializeField] WindManager windManager;
+    [SerializeField] FauxBallController fauxBall;
     [SerializeField] Transform ballSpawnPoint;
     Vector3 TotalForce;
 
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         RotatePlayer();
         TotalForce = (Vector3.up * ballController.hitHeight) + (Vector3.forward * ballController.hitStrength);
-        trajectoryLine.SimulateTrajectory(ballController, ballSpawnPoint.position, TotalForce);
+        trajectoryLine.SimulateTrajectory(fauxBall, ballController.transform.position, TotalForce);
     }
     private void Pause_performed(InputAction.CallbackContext obj)
     {
@@ -45,16 +47,18 @@ public class PlayerController : MonoBehaviour
     }
     private void Hit_performed(InputAction.CallbackContext obj)
     {
-        Debug.Log("Hit Performed");
+        //Debug.Log("Hit Performed");
         if (!ballController.isMoving && !ballController.isHit)
         {
-            var Spawned = Instantiate(ballController, ballSpawnPoint.position, ballSpawnPoint.rotation);
-            Spawned.Init(TotalForce,false);
+            ballSpawnPoint.gameObject.SetActive(false);
+            ballController.PrepareHit();
         }
     }
     private void Reset_performed(InputAction.CallbackContext obj)
     {
-        BallController.Instance.ResetBall();
+        ballController.ResetBall();
+        ballSpawnPoint.gameObject.SetActive(true);
+        windManager.SetWindValues();
     }
     void RotatePlayer()
     {
@@ -62,7 +66,7 @@ public class PlayerController : MonoBehaviour
         float rotationAmount = rotationValue * rotationSpeed * Time.deltaTime;
 
         // For a standard 3D game (rotating around the Y-Axis)
-        transform.Rotate(0, rotationAmount, 0);
+        trajectoryLine.transform.Rotate(0, rotationAmount, 0);
 
     }
     private void OnDisable()

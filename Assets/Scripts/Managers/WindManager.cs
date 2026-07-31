@@ -37,11 +37,10 @@ public class WindManager : MonoBehaviour
     {
         if (windPower != 0 | windRandomPower != 0) isWindy = true;
         else isWindy = false;
-        if (Input.GetKeyDown(KeyCode.R)) SetWindValues();
 
     }
 
-    void SetWindValues()
+    public void SetWindValues()
     {
         windRandomPower = Random.Range(0, 9);
         windRandomDirection = new Vector3(Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f), Random.Range(-0.9f, 0.9f));

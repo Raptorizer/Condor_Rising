@@ -433,7 +433,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639208379197998125
+  lastModified: 639193824454381487
   FileSizes: []
   Exists: 1
 --- !u!114 &-5737160556653821734
@@ -829,7 +829,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639208379197898125
+  lastModified: 639193812653280666
   FileSizes: []
   Exists: 1
 --- !u!114 &-2469085552686872227
@@ -930,7 +930,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639208379198278169
+  lastModified: 639193824183110476
   FileSizes: []
   Exists: 1
 --- !u!114 &-1417092498699788833
@@ -998,7 +998,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 639208379198288166
+  lastModified: 639193824183275642
   FileSizes: []
   Exists: 1
 --- !u!114 &-1228296400580946725
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 444894718355748407}
   cacheVersion: 131860
-  cacheTime: 639208379198288166
+  cacheTime: 639193824454401444
   SerializableEventsDict:
   - key: event:/Ambience/Forest
     index: 0
@@ -1218,18 +1218,10 @@ MonoBehaviour:
     index: 6
   - key: event:/Music/GolfGreen
     index: 7
-  - key: event:/Interactables/Barrel Roll
+  - key: event:/UI/OkayAction
     index: 8
-  - key: event:/Ambience/Country
+  - key: event:/UI/CancelAction
     index: 9
-  - key: event:/Ambience/City
-    index: 10
-  - key: event:/UI/Okay
-    index: 11
-  - key: event:/Interactables/Wooden Collision
-    index: 12
-  - key: event:/UI/Cancel
-    index: 13
 --- !u!114 &201937218406980914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1288,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639208379197998125
+  lastModified: 639193824454401444
   FileSizes:
   - Name: 
     Value: 2150
@@ -1390,7 +1382,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Dialogue_JP.bank
   Name: Dialogue_JP
   StudioPath: bank:/Dialogue_JP
-  lastModified: 639208379197988136
+  lastModified: 639193786263963801
   FileSizes: []
   Exists: 1
 --- !u!114 &1310205345135786937
@@ -1480,7 +1472,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639208379198268176
+  lastModified: 639193824183090264
   FileSizes: []
   Exists: 1
 --- !u!114 &1827907140761651837
@@ -1549,7 +1541,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Dialogue_CN.bank
   Name: Dialogue_CN
   StudioPath: bank:/Dialogue_CN
-  lastModified: 639208379197958128
+  lastModified: 639193786262352957
   FileSizes: []
   Exists: 1
 --- !u!114 &3037720173946580738
@@ -1567,7 +1559,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Dialogue_EN.bank
   Name: Dialogue_EN
   StudioPath: bank:/Dialogue_EN
-  lastModified: 639208379197978131
+  lastModified: 639193786263160819
   FileSizes: []
   Exists: 1
 --- !u!114 &3685429651247397294

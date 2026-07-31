@@ -42,40 +42,35 @@ public class BallController : MonoBehaviour
     public bool isGrounded;
     public string groundValue;
     public GroundTypes groundType;
-    bool _isGhost;
 
     public Rigidbody rb;
 
-
-    //void Awake()
-    //{
-    //    if (Instance != null && Instance != this)
-    //    {
-    //        Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    Instance = this;
-    //}
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
     void Start()
     {
         if (windInfo == null) windInfo = WindManager.instance;
         if (windArea == null) windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
-        rb = GetComponent<Rigidbody>();
+        if (rb == null) rb = GetComponent<Rigidbody>();
         startingPos = transform.position;
     }
 
     void Update()
     {
         currentPos = transform.position;
-        //if (Input.GetKeyDown(KeyCode.Space) && !isHit && !isMoving) PrepareHit();
-        //if (Input.GetKeyDown(KeyCode.R)) ResetBall();
     }
      void FixedUpdate()
     {
         ballSpeedVector = rb.linearVelocity;
         ballSpeedMagnitude = ballSpeedVector.magnitude;
-        // Apply the hit force if spacebar was pressed during Update
         if (applyHitForce)
         {
             ExecuteHit();
@@ -101,11 +96,6 @@ public class BallController : MonoBehaviour
         //finalPos = Vector3.zero;
         transform.position = startingPos;
     }
-    public void Init(Vector3 totalForce, bool isGhost)
-    {
-        _isGhost = isGhost;
-        rb.AddForce(totalForce);
-    }
     public void PrepareHit()
     {
         Debug.Log("Prepare hit");
@@ -121,6 +111,7 @@ public class BallController : MonoBehaviour
 
     public void ExecuteHit()
     {
+        Debug.Log("Execute Hit");
         // Combine all force calculations into a single Vector3
         Vector3 totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength);
 
@@ -164,7 +155,6 @@ public class BallController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (_isGhost) return;
         isGrounded = true;
         groundValue = collision.collider.tag;
         //Debug.Log($"On the Ground{ballSpeedVector}");
