@@ -7,10 +7,11 @@ TagManager:
   - Green
   - Fairway
   - Sand
-  - Rock
   - Water
   - Start
   - WindArea
+  - Ball
+  - Rough
   layers:
   - Default
   - TransparentFX
