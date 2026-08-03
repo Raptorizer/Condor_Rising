@@ -8699,7 +8699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4103511576595795758, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103511576595795758, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6245472381047951677, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8723,7 +8727,11 @@ PrefabInstance:
       objectReference: {fileID: 9081295144687224092}
     - target: {fileID: 7823626517992075374, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823626517992075374, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7823626517992075374, guid: 02a05714e676aff419491afd69d12b5f, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
@@ -10042,7 +10050,7 @@ MonoBehaviour:
   ballSpawnPoint: {fileID: 1864268181}
   TotalForce: {x: 0, y: 0, z: 0}
   rotationValue: 0
-  rotationSpeed: 100
+  rotationSpeed: 60
 --- !u!114 &9104765074325237812
 MonoBehaviour:
   m_ObjectHideFlags: 0

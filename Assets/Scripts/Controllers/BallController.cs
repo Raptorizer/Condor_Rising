@@ -71,7 +71,7 @@ public class BallController : MonoBehaviour
     {
         ballSpeedVector = rb.linearVelocity;
         ballSpeedMagnitude = ballSpeedVector.magnitude;
-        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (Vector3.right * transform.rotation.y);
+        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (Vector3.right * transform.localRotation.y * PlayerController.Instance.rotationSpeed);
         if (applyHitForce)
         {
             ExecuteHit();
@@ -93,8 +93,7 @@ public class BallController : MonoBehaviour
         rb.mass = defaultMass;
         rb.linearDamping = defaultDamping;
         rb.Sleep();
-
-        //finalPos = Vector3.zero;
+        PlayerController.Instance.GetComponent<LineRenderer>().enabled = true;
         transform.position = startingPos;
     }
     public void PrepareHit()

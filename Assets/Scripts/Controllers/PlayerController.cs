@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform ballSpawnPoint;
     [SerializeField] Vector3 TotalForce;
     [SerializeField] float rotationValue;
-    [SerializeField] float rotationSpeed = 100f; //Degrees per second
+    [SerializeField] public float rotationSpeed = 60f; //Degrees per second
 
     void Awake()
     {
@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
         }
         Instance = this;
     }
-
     private void OnEnable()
     {
         if (keybindings == null) keybindings = new();
@@ -39,15 +38,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        //RotatePlayer();
+        RotatePlayer();
         TotalForce = ballController.totalForce;
         trajectoryLine.SimulateTrajectory(fauxBall, ballSpawnPoint.position, TotalForce);
     }
+#region Controls
     private void Pause_performed(InputAction.CallbackContext obj)
     {
         throw new System.NotImplementedException();
     }
-
     private void Rotate_performed(InputAction.CallbackContext obj)
     {
         // Reads the -1 (Left) or 1 (Right) float value from the keys
@@ -61,21 +60,24 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Hit Performed");
         if (!ballController.isMoving && !ballController.isHit)
+            this.GetComponent<LineRenderer>().enabled = false;
             ballController.PrepareHit();
     }
     private void Reset_performed(InputAction.CallbackContext obj)
     {
         ballController.ResetBall();
+        this.GetComponent<LineRenderer>().enabled = true;
         windManager.SetWindValues();
     }
+#endregion
     void RotatePlayer()
     {
         // Calculate framing rotation independent of frame rates
-        float rotationAmount = ballSpawnPoint.rotation.y * rotationSpeed * Time.deltaTime;
+        float rotationAmount = rotationValue * rotationSpeed * Time.deltaTime;
         //ballSpawnPoint.Rotate(rotationAmount * Time.deltaTime * Vector3.right);
 
-    // For a standard 3D game (rotating around the Y-Axis)
-    ballSpawnPoint.transform.Rotate(0, rotationAmount, 0);
+        // For a standard 3D game (rotating around the Y-Axis)
+        ballSpawnPoint.transform.Rotate(0, rotationAmount, 0);
 
     }
     private void OnDisable()
