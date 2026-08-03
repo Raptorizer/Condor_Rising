@@ -27,7 +27,7 @@ public class BallController : MonoBehaviour
     public int hitStrength = 100;
     [Range(0, 0.5f)] public float spinPower;
     public SpinDirection spinDirection;
-
+    public Vector3 totalForce;
     [Header("External References")]
     [SerializeField] WindManager windInfo;
     [SerializeField] BoxCollider windArea;
@@ -71,6 +71,7 @@ public class BallController : MonoBehaviour
     {
         ballSpeedVector = rb.linearVelocity;
         ballSpeedMagnitude = ballSpeedVector.magnitude;
+        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (Vector3.right * transform.localRotation.y * PlayerController.Instance.rotationSpeed);
         if (applyHitForce)
         {
             ExecuteHit();
@@ -92,8 +93,7 @@ public class BallController : MonoBehaviour
         rb.mass = defaultMass;
         rb.linearDamping = defaultDamping;
         rb.Sleep();
-
-        //finalPos = Vector3.zero;
+        PlayerController.Instance.GetComponent<LineRenderer>().enabled = true;
         transform.position = startingPos;
     }
     public void PrepareHit()
@@ -112,9 +112,6 @@ public class BallController : MonoBehaviour
     public void ExecuteHit()
     {
         Debug.Log("Execute Hit");
-        // Combine all force calculations into a single Vector3
-        Vector3 totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength);
-
         if (spinDirection != SpinDirection.none) totalForce += AddSpin();
 
         if (windInfo != null && windInfo.isWindy)
