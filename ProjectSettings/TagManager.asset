@@ -12,6 +12,7 @@ TagManager:
   - WindArea
   - Ball
   - Rough
+  - Hole
   layers:
   - Default
   - TransparentFX
