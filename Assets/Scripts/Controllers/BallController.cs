@@ -12,10 +12,10 @@ public class BallController : MonoBehaviour
     public static BallController Instance { get; private set; } = null;
 
     [Header("Physics")]
-    [SerializeField] private float stopVelocityThreshold = 0.3f;
-    [SerializeField] private float defaultMass = 0.04593f;
-    [SerializeField] private float defaultDamping = 0.1f;
-    [SerializeField] private float spinMultiplier = 10f;
+    [SerializeField]  float stopVelocityThreshold = 0.3f;
+    private float defaultMass = 0.04593f;
+    private float defaultDamping = 0.1f;
+    [SerializeField]  float spinMultiplier = 10f;
 
     [Header("Hit Settings")]
     //150 height & 135 strength = 174m/190y Beginner
@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour
     //150 height & 174 strength = 228m/250y Good
     //150 height & 203 strength = 270m/296y PGA tour
     public bool isHit;
-    private bool applyHitForce; // Flag to sync Update input with FixedUpdate physics
+    bool applyHitForce; // Flag to sync Update input with FixedUpdate physics
     public int hitCount;
     public int hitHeight = 50; 
     public int hitStrength = 100;
