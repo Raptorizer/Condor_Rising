@@ -15,15 +15,17 @@ public class BallController : MonoBehaviour
     [SerializeField] private float stopVelocityThreshold = 0.3f;
     [SerializeField] private float defaultMass = 0.04593f;
     [SerializeField] private float defaultDamping = 0.1f;
-    [SerializeField] private float groundMassMultiplier = 40f;
-    [SerializeField] private float groundDampingMultiplier = 6f;
     [SerializeField] private float spinMultiplier = 10f;
 
     [Header("Hit Settings")]
+    //150 height & 135 strength = 174m/190y Beginner
+    //150 height & 155 strength = 200m/220y Average
+    //150 height & 174 strength = 228m/250y Good
+    //150 height & 203 strength = 270m/296y PGA tour
     public bool isHit;
     private bool applyHitForce; // Flag to sync Update input with FixedUpdate physics
     public int hitCount;
-    public int hitHeight = 50;
+    public int hitHeight = 50; 
     public int hitStrength = 100;
     [Range(0, 0.5f)] public float spinPower;
     public SpinDirection spinDirection;
@@ -81,7 +83,7 @@ public class BallController : MonoBehaviour
         if (groundValue == "Start") return;
         if (!isGrounded) return;
         if (!isMoving) return;
-        BallStopRolling();
+            BallStopRolling();
     }
     public void ResetBall()
     {
@@ -156,7 +158,6 @@ public class BallController : MonoBehaviour
         groundValue = collision.collider.tag;
         //Debug.Log($"On the Ground{ballSpeedVector}");
         //Debug.Log($"Touched {collision.collider.tag}");
-
         if (!Enum.IsDefined(typeof(GroundTypes), groundValue))
         {
             // error should occur
@@ -166,28 +167,17 @@ public class BallController : MonoBehaviour
         switch (Enum.Parse<GroundTypes>(groundValue))
         {
             case GroundTypes.Start:
-                rb.mass = defaultMass;
-                rb.linearDamping = defaultDamping;
                 break;
             case GroundTypes.Fairway:
-                rb.mass = defaultMass * groundMassMultiplier;
-                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
             case GroundTypes.Rough:
-                groundMassMultiplier = groundMassMultiplier * 2;
-                groundDampingMultiplier = groundDampingMultiplier * 2;
-                rb.mass = defaultMass * groundMassMultiplier;
-                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
             case GroundTypes.Green:
-                rb.mass = defaultMass * groundMassMultiplier;
-                rb.linearDamping = defaultDamping * groundDampingMultiplier;
                 break;
             case GroundTypes.Water:
                 ResetBall();
                 break;
             case GroundTypes.Sand:
-                BallStopRolling();
                 break;
             default:
                 Debug.Log("Ball has not hit a valid ground type");

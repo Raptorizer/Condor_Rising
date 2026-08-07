@@ -60,8 +60,10 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Hit Performed");
         if (!ballController.isMoving && !ballController.isHit)
+        {
             this.GetComponent<LineRenderer>().enabled = false;
             ballController.PrepareHit();
+        }
     }
     private void Reset_performed(InputAction.CallbackContext obj)
     {
