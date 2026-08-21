@@ -13,8 +13,6 @@ public class BallController : MonoBehaviour
 
     [Header("Physics")]
     [SerializeField]  float stopVelocityThreshold = 0.3f;
-    private float defaultMass = 0.04593f;
-    private float defaultDamping = 0.1f;
     [SerializeField]  float spinMultiplier = 10f;
 
     [Header("Hit Settings")]
@@ -33,6 +31,7 @@ public class BallController : MonoBehaviour
     [Header("External References")]
     [SerializeField] WindManager windInfo;
     [SerializeField] BoxCollider windArea;
+    [SerializeField] GameObject fauxball;
 
     [Header("Debug Values")]
     public Vector3 startingPos;
@@ -61,6 +60,7 @@ public class BallController : MonoBehaviour
     {
         if (windInfo == null) windInfo = WindManager.instance;
         if (windArea == null) windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
+        if (fauxball == null) fauxball = GameObject.Find("Fauxball");
         if (rb == null) rb = GetComponent<Rigidbody>();
         startingPos = transform.position;
     }
@@ -73,7 +73,7 @@ public class BallController : MonoBehaviour
     {
         ballSpeedVector = rb.linearVelocity;
         ballSpeedMagnitude = ballSpeedVector.magnitude;
-        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (Vector3.right * transform.localRotation.y * PlayerController.Instance.rotationSpeed);
+        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (PlayerController.Instance.rotationSpeed * transform.localRotation.y * Vector3.right);
         if (applyHitForce)
         {
             ExecuteHit();
@@ -91,12 +91,10 @@ public class BallController : MonoBehaviour
         isHit = false;
         isMoving = false;
         applyHitForce = false;
-
-        rb.mass = defaultMass;
-        rb.linearDamping = defaultDamping;
         rb.Sleep();
         PlayerController.Instance.GetComponent<LineRenderer>().enabled = true;
         transform.position = startingPos;
+        fauxball.transform.position = startingPos;
     }
     public void PrepareHit()
     {
@@ -130,13 +128,14 @@ public class BallController : MonoBehaviour
         //Stops the ball from moving
         isMoving = false;
         isHit = false;
+        applyHitForce = false;
         rb.linearVelocity = Vector3.zero;
-        rb.mass = defaultMass;
-        rb.linearDamping = defaultDamping;
         rb.Sleep();
-
+    
         finalPos = transform.position;
-        if (windArea != null) windArea.enabled = true;
+        fauxball.transform.position = finalPos;
+        PlayerController.Instance.GetComponent<LineRenderer>().enabled = true;
+        //if (windArea != null) windArea.enabled = true;
     }
     Vector3 AddSpin()
     {
