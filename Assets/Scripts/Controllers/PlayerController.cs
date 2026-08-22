@@ -3,91 +3,189 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    InputSystem_Actions keybindings;
-    public static PlayerController Instance { get; private set; } = null;
-    [SerializeField] TrajectoryLine trajectoryLine;
-    [SerializeField] BallController ballController;
-    [SerializeField] WindManager windManager;
-    [SerializeField] FauxBallController fauxBall;
+    public static PlayerController Instance { get; private set; }
 
-    [SerializeField] Transform ballSpawnPoint;
-    [SerializeField] Vector3 TotalForce;
-    [SerializeField] float rotationValue;
-    [SerializeField] public float rotationSpeed = 60f; //Degrees per second
+    [Header("Core References")]
+    [SerializeField]  TrajectoryLine trajectoryLine;
+    [SerializeField]  BallController ballController;
+    [SerializeField]  WindManager windManager;
+    [SerializeField]  LineRenderer aimLineRenderer; // Cached to avoid GetComponent calls
+
+    [Header("Aiming Settings")]
+    [SerializeField]  Transform targetHole; // Assign the hole/pin in the Inspector
+    [SerializeField]  Transform ballSpawnPoint;
+    public float rotationSpeed = 60f;
+    [SerializeField]  float maxRotationLimit = 45f;
+
+    [Header("Hit Power")]
+    public float hitHeight = 50f;
+    public float hitStrength = 100f;
+
+     InputSystem_Actions keybindings;
+     float rotationValue;
+     float baseYaw;
+     float currentYaw;
+
+    // Limits recalculations to when aim actually shifts
+     bool needsTrajectoryUpdate = true;
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Debug.LogError($"Found Duplicate Player Controller on {gameObject.name}");
             Destroy(gameObject);
             return;
         }
         Instance = this;
     }
+
+    private void Start()
+    {
+        // Fallback in case it wasn't assigned in the inspector
+        if (aimLineRenderer == null) aimLineRenderer = GetComponent<LineRenderer>();
+
+        if (ballSpawnPoint != null)
+        {
+            baseYaw = ballSpawnPoint.eulerAngles.y;
+            currentYaw = baseYaw;
+        }
+        AimAtTarget(targetHole);
+    }
+
     private void OnEnable()
     {
-        if (keybindings == null) keybindings = new();
+        if (keybindings == null) keybindings = new InputSystem_Actions();
 
         keybindings.Player.Hit.performed += Hit_performed;
         keybindings.Player.Reset.performed += Reset_performed;
-        keybindings.Player.Pause.performed += Pause_performed;
         keybindings.Player.Rotate.performed += Rotate_performed;
         keybindings.Player.Rotate.canceled += Rotate_canceled;
         keybindings.Enable();
     }
+
     private void Update()
     {
-        RotatePlayer();
-        TotalForce = ballController.totalForce;
-        trajectoryLine.SimulateTrajectory(fauxBall, ballSpawnPoint.position, TotalForce);
+        if (rotationValue != 0f)
+        {
+            RotatePlayer();
+            needsTrajectoryUpdate = true;
+        }
+
+        if (needsTrajectoryUpdate && !ballController.isMoving)
+        {
+            Vector3 baseForce = CalculateBaseHitForce();
+            trajectoryLine.SimulateTrajectory(ballSpawnPoint.position, baseForce);
+            needsTrajectoryUpdate = false;
+        }
     }
-#region Controls
-    private void Pause_performed(InputAction.CallbackContext obj)
+
+    private Vector3 CalculateBaseHitForce()
     {
-        throw new System.NotImplementedException();
+        Vector3 forwardForce = ballSpawnPoint.forward * hitStrength;
+        Vector3 upwardForce = Vector3.up * hitHeight;
+        return forwardForce + upwardForce;
     }
+
+    #region Controls
+    private void Hit_performed(InputAction.CallbackContext obj)
+    {
+        if (!ballController.isMoving && !ballController.isHit)
+        {
+            aimLineRenderer.enabled = false;
+
+            Vector3 finalForce = CalculateBaseHitForce();
+            ballController.ExecuteHit(finalForce);
+
+            needsTrajectoryUpdate = false;
+        }
+    }
+
     private void Rotate_performed(InputAction.CallbackContext obj)
     {
-        // Reads the -1 (Left) or 1 (Right) float value from the keys
         rotationValue = obj.ReadValue<float>();
     }
+
     private void Rotate_canceled(InputAction.CallbackContext obj)
     {
         rotationValue = 0f;
     }
-    private void Hit_performed(InputAction.CallbackContext obj)
-    {
-        Debug.Log("Hit Performed");
-        if (!ballController.isMoving && !ballController.isHit)
-        {
-            this.GetComponent<LineRenderer>().enabled = false;
-            ballController.PrepareHit();
-        }
-    }
+
     private void Reset_performed(InputAction.CallbackContext obj)
     {
         ballController.ResetBall();
-        this.GetComponent<LineRenderer>().enabled = true;
-        windManager.SetWindValues();
+        aimLineRenderer.enabled = true;
+
+        windManager?.SetWindValues();
+
+        // Snap the aim back to the target on reset
+        if (targetHole != null)
+        {
+            AimAtTarget(targetHole);
+        }
+        else
+        {
+            needsTrajectoryUpdate = true;
+        }
     }
-#endregion
-    void RotatePlayer()
+    #endregion
+
+    private void RotatePlayer()
     {
-        // Calculate framing rotation independent of frame rates
         float rotationAmount = rotationValue * rotationSpeed * Time.deltaTime;
-        //ballSpawnPoint.Rotate(rotationAmount * Time.deltaTime * Vector3.right);
+        currentYaw += rotationAmount;
 
-        // For a standard 3D game (rotating around the Y-Axis)
-        ballSpawnPoint.transform.Rotate(0, rotationAmount, 0);
+        // Clamp the rotation relative to the base yaw
+        currentYaw = Mathf.Clamp(currentYaw, baseYaw - maxRotationLimit, baseYaw + maxRotationLimit);
 
+        ballSpawnPoint.rotation = Quaternion.Euler(0, currentYaw, 0);
+
+        // Sync the ball's visual orientation
+        if (ballController != null)
+        {
+            ballController.transform.rotation = ballSpawnPoint.rotation;
+        }
+    }
+
+    public void AimAtTarget(Transform targetHole)
+    {
+        if (targetHole != null)
+        {
+            ballSpawnPoint.LookAt(targetHole);
+
+            Vector3 eulerAngles = ballSpawnPoint.eulerAngles;
+            ballSpawnPoint.rotation = Quaternion.Euler(0, eulerAngles.y, 0);
+
+            baseYaw = eulerAngles.y;
+            currentYaw = baseYaw;
+
+            if (ballController != null)
+            {
+                ballController.transform.rotation = ballSpawnPoint.rotation;
+            }
+
+            needsTrajectoryUpdate = true;
+        }
+    }
+    // Call this from BallController when the ball comes to a complete stop
+    public void EnableAimLine()
+    {
+        if (aimLineRenderer != null)
+        {
+            aimLineRenderer.enabled = true;
+
+            // Re-center the aim toward the hole from the new position
+            if (targetHole != null)
+            {
+                AimAtTarget(targetHole);
+            }
+            else
+            {
+                needsTrajectoryUpdate = true;
+            }
+        }
     }
     private void OnDisable()
     {
-        keybindings.Player.Hit.performed -= Hit_performed;
-        keybindings.Player.Reset.performed -= Reset_performed;
-        keybindings.Player.Pause.performed -= Pause_performed;
-        keybindings.Player.Rotate.performed -= Rotate_performed;
-        keybindings.Disable();
+        keybindings?.Disable();
     }
 }

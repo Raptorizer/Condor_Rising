@@ -1,145 +1,93 @@
 using System;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 
 public enum SpinDirection { none, up, down, left, right }
-public enum GroundTypes {none, Start, Fairway, Green, Rough, Sand, Water }
+public enum GroundTypes { none, Start, Fairway, Green, Rough, Sand, Water }
+
 [RequireComponent(typeof(Rigidbody))]
 public class BallController : MonoBehaviour
 {
-    public static BallController Instance { get; private set; } = null;
+    public static BallController Instance { get; private set; }
 
     [Header("Physics")]
-    [SerializeField]  float stopVelocityThreshold = 0.3f;
-    private float defaultMass = 0.04593f;
-    private float defaultDamping = 0.1f;
-    [SerializeField]  float spinMultiplier = 10f;
+    [SerializeField] private float stopVelocityThreshold = 0.3f;
+    [SerializeField] private float spinMultiplier = 10f;
 
     [Header("Hit Settings")]
-    //150 height & 135 strength = 174m/190y Beginner
-    //150 height & 155 strength = 200m/220y Average
-    //150 height & 174 strength = 228m/250y Good
-    //150 height & 203 strength = 270m/296y PGA tour
     public bool isHit;
-    bool applyHitForce; // Flag to sync Update input with FixedUpdate physics
     public int hitCount;
-    public int hitHeight = 50; 
-    public int hitStrength = 100;
     [Range(0, 0.5f)] public float spinPower;
     public SpinDirection spinDirection;
-    public Vector3 totalForce;
+
     [Header("External References")]
     [SerializeField] WindManager windInfo;
     [SerializeField] BoxCollider windArea;
 
-    [Header("Debug Values")]
-    public Vector3 startingPos;
-    public Vector3 currentPos;
-    public Vector3 finalPos;
-    public float ballSpeedMagnitude;
-    public Vector3 ballSpeedVector;
+    [Header("State")]
     public bool isMoving;
     public bool isGrounded;
-    public string groundValue;
-    public GroundTypes groundType;
-
     public Rigidbody rb;
+
+    private Vector3 startPosition;
 
     void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Debug.LogError($"Found Duplicate Wind Manager on {gameObject.name}");
             Destroy(gameObject);
             return;
         }
         Instance = this;
     }
+
     void Start()
     {
         if (windInfo == null) windInfo = WindManager.instance;
-        if (windArea == null) windArea = GameObject.Find("WindArea").GetComponent<BoxCollider>();
+        if (windArea == null) windArea = GameObject.Find("WindArea")?.GetComponent<BoxCollider>();
         if (rb == null) rb = GetComponent<Rigidbody>();
-        startingPos = transform.position;
+
+        startPosition = transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        currentPos = transform.position;
+        // One-line check to stop the ball
+        if (!isMoving || !isGrounded || rb.linearVelocity.magnitude > stopVelocityThreshold) return;
+
+        BallStopRolling();
     }
-     void FixedUpdate()
-    {
-        ballSpeedVector = rb.linearVelocity;
-        ballSpeedMagnitude = ballSpeedVector.magnitude;
-        totalForce = (Vector3.up * hitHeight) + (Vector3.forward * hitStrength) + (Vector3.right * transform.localRotation.y * PlayerController.Instance.rotationSpeed);
-        if (applyHitForce)
-        {
-            ExecuteHit();
-            applyHitForce = false;
-        }
-        if (ballSpeedMagnitude > stopVelocityThreshold) return;
-        if (groundValue == "Start") return;
-        if (!isGrounded) return;
-        if (!isMoving) return;
-            BallStopRolling();
-    }
+
     public void ResetBall()
     {
         hitCount = 0;
         isHit = false;
         isMoving = false;
-        applyHitForce = false;
 
-        rb.mass = defaultMass;
-        rb.linearDamping = defaultDamping;
+        // Zero out angular velocity as well to prevent residual spinning
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         rb.Sleep();
-        PlayerController.Instance.GetComponent<LineRenderer>().enabled = true;
-        transform.position = startingPos;
+
+        transform.position = startPosition;
     }
-    public void PrepareHit()
+
+    public void ExecuteHit(Vector3 baseAimingForce)
     {
-        Debug.Log("Prepare hit");
-        rb.WakeUp();
-        if (windArea != null) windArea.enabled = false;
         isHit = true;
         isMoving = true;
         hitCount++;
 
-        // Signal FixedUpdate to apply forces on the next physics step
-        applyHitForce = true;
+        rb.WakeUp();
+        if (windArea != null) windArea.enabled = false;
+
+        Vector3 finalAppliedForce = baseAimingForce + GetSpinForce() + GetWindForce();
+        rb.AddForce(finalAppliedForce);
     }
 
-    public void ExecuteHit()
+    private Vector3 GetSpinForce()
     {
-        Debug.Log("Execute Hit");
-        if (spinDirection != SpinDirection.none) totalForce += AddSpin();
+        if (spinDirection == SpinDirection.none) return Vector3.zero;
 
-        if (windInfo != null && windInfo.isWindy)
-        {
-            totalForce += windInfo.isRandWindy
-                ? (windInfo.windRandomDirection * windInfo.windRandomPower)
-                : (windInfo.windDirection * windInfo.windPower);
-        }
-        // Single line AddForce
-        rb.AddForce(totalForce);
-    }
-    void BallStopRolling()
-    {
-        //Stops the ball from moving
-        isMoving = false;
-        isHit = false;
-        rb.linearVelocity = Vector3.zero;
-        rb.mass = defaultMass;
-        rb.linearDamping = defaultDamping;
-        rb.Sleep();
-
-        finalPos = transform.position;
-        if (windArea != null) windArea.enabled = true;
-    }
-    Vector3 AddSpin()
-    {
         float appliedSpin = spinPower * spinMultiplier;
 
         return spinDirection switch
@@ -150,43 +98,61 @@ public class BallController : MonoBehaviour
             SpinDirection.right => Vector3.right * appliedSpin,
             _ => Vector3.zero,
         };
-    } 
+    }
+
+    private Vector3 GetWindForce()
+    {
+        if (windInfo == null || !windInfo.isWindy) return Vector3.zero;
+
+        return windInfo.isRandWindy
+            ? (windInfo.windRandomDirection * windInfo.windRandomPower)
+            : (windInfo.windDirection * windInfo.windPower);
+    }
+
+    void BallStopRolling()
+    {
+        isMoving = false;
+        isHit = false;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.Sleep();
+
+        if (windArea != null) windArea.enabled = true;
+
+        // TELL THE PLAYER CONTROLLER TO TURN THE LINE BACK ON
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.EnableAimLine();
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
-        groundValue = collision.collider.tag;
-        //Debug.Log($"On the Ground{ballSpeedVector}");
-        //Debug.Log($"Touched {collision.collider.tag}");
-        if (!Enum.IsDefined(typeof(GroundTypes), groundValue))
-        {
-            // error should occur
-            return;
-        }
 
-        switch (Enum.Parse<GroundTypes>(groundValue))
+        // TryParse is much more efficient than using Enum.IsDefined and Enum.Parse separately
+        if (!Enum.TryParse(collision.collider.tag, out GroundTypes groundType)) return;
+
+        switch (groundType)
         {
             case GroundTypes.Start:
                 break;
             case GroundTypes.Fairway:
+            case GroundTypes.Green: // Stacked cases since Fairway and Green use the exact same math
                 break;
             case GroundTypes.Rough:
-                break;
-            case GroundTypes.Green:
                 break;
             case GroundTypes.Water:
                 ResetBall();
                 break;
             case GroundTypes.Sand:
                 break;
-            default:
-                Debug.Log("Ball has not hit a valid ground type");
-                break;
         }
     }
-    void OnCollisionExit(Collision collision) 
+
+    void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
     }
-
 }
